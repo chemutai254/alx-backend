@@ -1,7 +1,11 @@
+#!/usr/bin/env python3
+"""Pagination"""
+
 import csv
 import math
-from typing import Tuple
-from typing import List
+from typing import List, Tuple
+
+index_range = __import__("0-simple_helper_function").index_range
 
 
 class Server:
@@ -24,10 +28,14 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        pass
+        """Return appropriate page of the dataset"""
+        assert type(page) == int and page > 0
+        assert type(page_size) == int and page_size > 0
 
-    def index_range(page: int, page_size: int) -> Tuple[int, int]:
-        """returns the start and end of the index according to the range"""
-        start_index = (page - 1) * page_size
-        end_index = start_index + page_size
-        return (start_index, end_index)
+        start_index, end_index = index_range(page, page_size)
+        res_list = []
+
+        if start_index >= len(self.dataset()):
+            return res_list
+        res_list = self.dataset()
+        return res_list[start_index:end_index]

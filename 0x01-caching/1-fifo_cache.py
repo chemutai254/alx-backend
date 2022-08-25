@@ -12,7 +12,7 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """Discard the first item put in cache (FIFO algorithm)"""
         if key is None or item is None:
-            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS - 1:
                 if key not in self.cache_data.keys():
                     print("DISCARD: {}".format(self._keys[0]))
                     self.cache_data.pop(self._keys[0])

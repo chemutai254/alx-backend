@@ -22,10 +22,10 @@ class Config(object):
             return loc
         return request.accept_languages.best_match(app.config['LANGUAGES'])
 
-    @app.route('/')
-    def index():
+    @app.route('/', strict_slashes=False)
+    def index() -> str:
         """Route"""
         return render_template('4-index.html')
 
     if __name__ == '__main__':
-        app.run(port='5000', host='0.0.0.0')
+        app.run(port='5000', host='0.0.0.0', debug=True)

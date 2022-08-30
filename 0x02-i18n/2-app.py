@@ -2,7 +2,6 @@
 """Use fuctions such as getlocale"""
 from flask import Flask, request, render_template
 from flask_babel import Babel
-app = Flask(__name__)
 
 
 class Config(object):
@@ -11,6 +10,7 @@ class Config(object):
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
+    app = Flask(__name__)
     app.config.from_object(Config)
     babel = Babel(app)
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Use fuctions such as getlocale"""
 from flask import Flask, request, render_template
-from app import app
 from flask_babel import Babel
+app = Flask(__name__)
 
 
 class Config(object):
@@ -24,3 +24,7 @@ class Config(object):
     def index():
         """routing"""
         return render_template('2-index.html')
+
+
+    if __name__ == '__main__':
+        app.run(port='5000', host='0.0.0.0')

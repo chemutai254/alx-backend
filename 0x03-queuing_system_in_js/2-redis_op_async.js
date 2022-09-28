@@ -1,5 +1,5 @@
 import { createClient } from 'redis';
-import { promisfy } from 'utils';
+import { promisify } from 'utils';
 
 function redisConnect() {
   const client = createClient();
